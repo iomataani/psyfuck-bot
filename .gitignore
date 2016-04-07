@@ -37,4 +37,7 @@ build/
 
 # file in più da cavare
 # api key, magari non committiamola
-api.txy
+api.txt
+
+# e non committiamo i log
+/logs/*
