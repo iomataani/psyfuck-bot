@@ -41,3 +41,8 @@ api.txt
 
 # e non committiamo i log
 /logs/*
+
+# e non committiamo le configurazioni e i database magari
+/config/*
+/db/*
+
