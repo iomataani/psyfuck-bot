@@ -44,5 +44,7 @@ api.txt
 
 # e non committiamo le configurazioni e i database magari
 /config/*
-/db/*
+/db
+*.db
+
 
