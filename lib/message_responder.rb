@@ -20,6 +20,10 @@ class MessageResponder
     on /^\/stop/ do
       answer_with_farewell_message
     end
+
+    on /^\/test (.+)/ do |arg|
+      answer_comando(arg)
+    end
   end
 
   private
@@ -50,5 +54,9 @@ class MessageResponder
     text = I18n.t('farewell_message')
 
     MessageSender.new(bot: bot, chat: message.chat, text: text).send
+  end
+
+  def answer_comando(arg)
+    MessageSender.new(bot: bot, chat: message.chat, text: arg).send
   end
 end
