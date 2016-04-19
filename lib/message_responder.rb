@@ -13,17 +13,22 @@ class MessageResponder
   end
 
   def respond
-    on /^\/start/ do
+    on (/^\/start/) do
       answer_with_greeting_message
     end
 
-    on /^\/stop/ do
+    on (/^\/stop/) do
       answer_with_farewell_message
     end
 
-    on /^\/test (.+)/ do |arg|
-      answer_comando(arg)
+    on (/^\/wiki (.+)/) do |cerca|
+      answer_wiki(cerca)
     end
+
+    on (/^\/help/) do
+      answer_aiotto
+    end
+
   end
 
   private
@@ -44,19 +49,32 @@ class MessageResponder
 
   end
 
+  def answer_aiotto
+
+    aiotto = """Al momento funziona solo il comando
+/wiki <parole> per cercare le voci nella wikispix"""
+
+    MessageSender.new(bot: bot, chat: message.chat, text: aiotto).send
+  end
+
   def answer_with_greeting_message
-    text = I18n.t('greeting_message')
+    text = "Psyfuck!"
 
     MessageSender.new(bot: bot, chat: message.chat, text: text).send
   end
 
   def answer_with_farewell_message
-    text = I18n.t('farewell_message')
+    text = "Adiòs!"
 
     MessageSender.new(bot: bot, chat: message.chat, text: text).send
   end
 
-  def answer_comando(arg)
-    MessageSender.new(bot: bot, chat: message.chat, text: arg).send
+  def answer_wiki(cerca)
+    if cerca == nil || cerca == ""
+      MessageSender.new(bot: bot, chat: message.chat, text: "Uso: /wiki <testo da cercare>").send
+    else
+      MessageSender.new(bot: bot, chat: message.chat, text: wikispix(cerca)).send
+    end
   end
+
 end

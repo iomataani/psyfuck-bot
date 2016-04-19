@@ -1,9 +1,11 @@
 #!/usr/bin/env ruby
 
 require 'telegram/bot'
+require 'colorize'
 
 require './lib/message_responder'
 require './lib/app_configurator'
+require './lib/wikispix'
 
 config = AppConfigurator.new
 config.configure
