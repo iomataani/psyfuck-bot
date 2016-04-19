@@ -52,7 +52,9 @@ class MessageResponder
   def answer_aiotto
 
     aiotto = """Al momento funziona solo il comando
-/wiki <parole> per cercare le voci nella wikispix"""
+/wiki <parole> per cercare le voci nella wikispix
+Volete ampliare il bot?
+Guardate qui: https://github.com/iomataani/psyfuck-bot"""
 
     MessageSender.new(bot: bot, chat: message.chat, text: aiotto).send
   end
