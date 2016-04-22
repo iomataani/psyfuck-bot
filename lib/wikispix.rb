@@ -26,7 +26,7 @@ def wikispix(voce)
     link = "http://www.spixellati.it/wiki/index.php?title=" + titolo.gsub(" ", "_")
   end
   else
-    link = "Ci sono GROSSI problemi nel bot, fottetevi, qualcuno sistemerà"
+    link = "Ci sono GROSSI problemi nel bot, fottetevi, qualcuno sistemerà."
   end
   
   return link
