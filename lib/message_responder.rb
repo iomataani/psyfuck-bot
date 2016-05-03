@@ -1,6 +1,10 @@
 require './models/user'
 require './lib/message_sender'
 
+# funzioni del bot
+require './lib/wikispix'
+require './lib/redento'
+
 class MessageResponder
   attr_reader :message
   attr_reader :bot
@@ -21,8 +25,12 @@ class MessageResponder
       answer_with_farewell_message
     end
 
-    on (/^\/wiki (.+)/) do |cerca|
-      answer_wiki(cerca)
+    on (/^\/wiki (.+)/) do |wiki|
+      answer_wiki(wiki)
+    end
+    
+    on (/^\/redento (.+)/) do |redento|
+        answer_redento(redento)
     end
 
     on (/^\/help/) do
@@ -51,8 +59,11 @@ class MessageResponder
 
   def answer_aiotto
 
-    aiotto = """Al momento funziona solo il comando
+    aiotto = """Uso del bot:
 /wiki <parole> per cercare le voci nella wikispix
+/redento <parole> per cercare i link rapidshare [semicit.]
+
+- o - o - o - o -
 Volete ampliare il bot?
 Guardate qui: https://github.com/iomataani/psyfuck-bot"""
 
@@ -71,11 +82,19 @@ Guardate qui: https://github.com/iomataani/psyfuck-bot"""
     MessageSender.new(bot: bot, chat: message.chat, text: text).send
   end
 
-  def answer_wiki(cerca)
-    if cerca == nil || cerca == ""
+  def answer_wiki(wiki)
+    if wiki == nil || wiki == ""
       MessageSender.new(bot: bot, chat: message.chat, text: "Uso: /wiki <testo da cercare>").send
     else
-      MessageSender.new(bot: bot, chat: message.chat, text: wikispix(cerca)).send
+      MessageSender.new(bot: bot, chat: message.chat, text: wikispix(wiki)).send
+    end
+  end
+
+  def answer_redento(redento)
+    if redento == nil || redento == ""
+      MessageSender.new(bot: bot, chat: message.chat, text: "Uso: /redento <testo da cercare>").send
+    else
+      MessageSender.new(bot: bot, chat: message.chat, text: redento(redento)).send
     end
   end
 
