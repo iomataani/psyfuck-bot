@@ -1,9 +1,10 @@
 #!/usr/bin/env ruby
 #encoding: utf-8
 
-require 'net/http'
-
 def redento(rom)
-  return "http://www.emuparadise.me/roms/search.php?query=#{rom.gsub(" ", "%20")}"
+  "http://www.emuparadise.me/roms/search.php?query=#{rom.gsub(" ", "%20")}"
 end
 
+def warezzone(torrent)
+  "https://torrentz.eu/search?f=#{torrent.gsub(" ", "%20")}"
+end
