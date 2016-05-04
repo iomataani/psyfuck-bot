@@ -33,6 +33,11 @@ class MessageResponder
         answer_redento(redento)
     end
 
+    on (/^\/warezzone (.+)/) do |warez|
+      answer_warezzone(warez)
+    end
+
+
     on (/^\/help/) do
       answer_aiotto
     end
@@ -103,7 +108,7 @@ Guardate qui: https://github.com/iomataani/psyfuck-bot"""
     if warez == nil || warez == ""
       MessageSender.new(bot: bot, chat: message.chat, text: "Uso: /warezzone <testo da cercare>").send
     else
-       MessageSender.new(bot: bot, chat: message.chat, text: warezzone(warez)).send
+      MessageSender.new(bot: bot, chat: message.chat, text: warezzone(warez)).send
     end
   end
 
