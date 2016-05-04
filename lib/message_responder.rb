@@ -62,6 +62,7 @@ class MessageResponder
     aiotto = """Uso del bot:
 /wiki <parole> per cercare le voci nella wikispix
 /redento <parole> per cercare i link rapidshare [semicit.]
+/warezzone <parole> per dimostrare di essere il warezzone che sei!
 
 - o - o - o - o -
 Volete ampliare il bot?
@@ -95,6 +96,14 @@ Guardate qui: https://github.com/iomataani/psyfuck-bot"""
       MessageSender.new(bot: bot, chat: message.chat, text: "Uso: /redento <testo da cercare>").send
     else
       MessageSender.new(bot: bot, chat: message.chat, text: redento(redento)).send
+    end
+  end
+
+  def answer_warezzone(warez)
+    if warez == nil || warez == ""
+      MessageSender.new(bot: bot, chat: message.chat, text: "Uso: /warezzone <testo da cercare>").send
+    else
+       MessageSender.new(bot: bot, chat: message.chat, text: warezzone(warez)).send
     end
   end
 
